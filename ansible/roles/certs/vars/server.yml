@@ -1,0 +1,6 @@
+password: lmz1234
+subject: "/C=IT/ST=ANCONA/L=ANCONA/O=QUAY/OU=IT Dev/CN=mac-fedora"
+user_dir: /home/lzuccarelli
+ansible_user: lzuccarelli
+server_name: mac-fedora
+ansible_sudo_pass: 

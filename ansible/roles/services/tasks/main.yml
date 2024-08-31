@@ -1,0 +1,36 @@
+- name: remove project directories
+  ansible.builtin.file:
+    path: '{{ user_dir }}/{{ project_dir }}/{{ item.name }}'
+    state: absent
+  loop: "{{ repos }}"
+  tags: fetch-build
+
+- name: git checkout the project/s
+  ansible.builtin.git:
+    repo: '{{ item.repo }}'
+    dest: '{{ user_dir }}/{{ project_dir }}/{{ item.name }}'
+    version: '{{ item.version }}'
+  loop: "{{ repos }}"
+  tags: fetch-build
+
+
+- name: cd into each repo then compile/build
+  shell: 'cd {{ user_dir }}/{{ project_dir }}/{{ item.name }} && make build'
+  register: output
+  with_items: "{{ repos }}"
+  tags: fetch-build
+
+- debug: 
+    var: output
+  tags: fetch-build
+
+- name: display image-mirror version
+  shell: 'cd {{ user_dir }}/{{ project_dir }}/rust-image-mirror && target/release/image-mirror version'
+  register: version
+  tags: check
+
+- debug:
+    var: version.stdout_lines
+  tags: check
+
+

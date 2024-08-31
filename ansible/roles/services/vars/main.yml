@@ -1,0 +1,11 @@
+ansible_user: lzuccarelli
+project_dir: Projects
+user_dir: /home/lzuccarelli
+ansible_sudo_pass:
+
+repos:
+  - {repo: "https://github.com/lmzuccarelli/rust-image-mirror.git", name: "image-mirror", version: "main"}
+  - {repo: "https://github.com/lmzuccarelli/rust-operator-catalog-viewer.git", name: "rust-operator-catalog-viewer", version: "main"}
+  - {repo: "https://github.com/lmzuccarelli/rust-catalog-introspection-tool.git", name: "rust-catalog-introspection-tool", version: "main"}
+  - {repo: "https://github.com/lmzuccarelli/rust-release-introspection-tool.git", name: "rust-release-introspection-tool", version: "main"}
+
